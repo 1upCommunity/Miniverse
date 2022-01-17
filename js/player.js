@@ -48,6 +48,6 @@ class Player{
     }
 
     syncName(name){
-        this.db.ref('players/' + this.name).update({"position": [this.x, this.y]});
+        this.db.ref('players/' + this.name).update({"position": [this.x, this.y], "name": this.name});
     }
 }

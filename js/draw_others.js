@@ -25,6 +25,9 @@ class OtherPlayerDrawer{
             translate(-camera.x + windowWidth / 2, -camera.y + windowHeight / 2)
             fill(255, 0, 0)
             try{
+                // nametag
+                textSize(16)
+                text(this.all_players[i].name, this.all_players[i].position[0] - textWidth(this.all_players[i].name) / 2, this.all_players[i].position[1] - 25)
                 ellipse(this.all_players[i].position[0], this.all_players[i].position[1], 40, 40)
             }catch(e){}
             pop()

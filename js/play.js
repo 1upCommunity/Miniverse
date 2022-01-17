@@ -36,10 +36,14 @@ class PlayScreen{
         this.name_button = createButton("Submit");
         this.name_button.position(windowWidth / 2 - textWidth("Submit") / 2, windowHeight / 10 * 5 - textWidth("Submit") / 2);
         this.name_button.mousePressed(() => {
-            this.substate = "play";
-            this.name_input.remove();
-            this.name_button.remove();
-            this.player = new Player(this.name_input.value(), this.db);
+            if(this.name_input.value() != ""){
+                this.substate = "play";
+                this.name_input.remove();
+                this.name_button.remove();
+                this.player = new Player(this.name_input.value(), this.db);
+            }else{
+                alert("Please enter a name!");
+            }
         })
         this.name_input.hide()
         this.name_button.hide()
