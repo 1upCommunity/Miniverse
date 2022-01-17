@@ -25,7 +25,12 @@ class OtherPlayerDrawer{
             if(screens[2].substate == "play" && dist(this.all_players[i].position[0], this.all_players[i].position[1], camera.x, camera.y) < 500 + windowHeight / 2){
                 push()
                 translate(-camera.x + windowWidth / 2, -camera.y + windowHeight / 2)
-                fill(255, 0, 0)
+                if (this.all_players[i].infected == true){
+                    fill(255, 0, 0)
+                }
+                else{
+                    fill(0, 255, 0)
+                }
                 try{
                     // nametag
                     textSize(16)

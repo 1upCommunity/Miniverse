@@ -1,18 +1,15 @@
 class Player{
     constructor(name, db){
         this.name = name
-        this.x = 0;
-        this.y = 0;
+        this.x = 0
+        this.y = 0
         this.velX = 0;
         this.velY = 0;
         this.terminalVel = windowWidth / 50;
         this.friction = 0.9;
+        this.infected = false;
         
         this.db = db
-        db.ref('players/' + this.name).once('value').then(function(snapshot) {
-            this.x = snapshot.val().x;
-            this.y = snapshot.val().y;
-        })
     }
 
     update(){
@@ -46,12 +43,24 @@ class Player{
 
         camera.x = this.x;
         camera.y = this.y;
+        
+        let inf = this.infected;
+        // get if infected
+        this.db.ref('players/').once('value').then(function(snapshot) {
+            var players = snapshot.val()
+            for(var i in players){
+                if(players[i].name != self.name && players[i].infected == true && dist(players[i].position[0], players[i].position[1], camera.x, camera.y) < 25){
+                    inf = true;
+                }
+            }
+        })
+        this.infected = inf;
     }
 
     draw(){
     }
 
     syncName(name){
-        this.db.ref('players/' + this.name).update({"position": [this.x, this.y], "name": this.name});
+        this.db.ref('players/' + this.name).update({"position": [this.x, this.y], "name": this.name, "infected": this.infected});
     }
 }
