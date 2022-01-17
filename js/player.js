@@ -45,8 +45,6 @@ class Player{
     }
 
     draw(){
-        fill(255, 0, 0)
-        ellipse(windowWidth / 2 - 20, windowHeight / 2 - 20, 40, 40)
     }
 
     syncName(name){
