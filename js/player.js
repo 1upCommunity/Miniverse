@@ -9,6 +9,10 @@ class Player{
         this.friction = 0.9;
         
         this.db = db
+        db.ref('players/' + this.name).once('value').then(function(snapshot) {
+            this.x = snapshot.val().x;
+            this.y = snapshot.val().y;
+        })
     }
 
     update(){
