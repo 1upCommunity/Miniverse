@@ -22,7 +22,7 @@ class OtherPlayerDrawer{
         this.all_players = this.update()
         for(var i in this.all_players){
             // if the player is close enough to draw
-            if(dist(this.all_players[i].x, this.all_players[i].y, player.x, player.y) < 500 + windowHeight){
+            if(screens[2].substate == "play" && dist(this.all_players[i].position[0], this.all_players[i].position[1], camera.x, camera.y) < 500 + windowHeight / 2){
                 push()
                 translate(-camera.x + windowWidth / 2, -camera.y + windowHeight / 2)
                 fill(255, 0, 0)
