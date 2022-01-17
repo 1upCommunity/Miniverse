@@ -21,16 +21,19 @@ class OtherPlayerDrawer{
     draw(){
         this.all_players = this.update()
         for(var i in this.all_players){
-            push()
-            translate(-camera.x + windowWidth / 2, -camera.y + windowHeight / 2)
-            fill(255, 0, 0)
-            try{
-                // nametag
-                textSize(16)
-                text(this.all_players[i].name, this.all_players[i].position[0] - textWidth(this.all_players[i].name) / 2, this.all_players[i].position[1] - 25)
-                ellipse(this.all_players[i].position[0], this.all_players[i].position[1], 40, 40)
-            }catch(e){}
-            pop()
+            // if the player is close enough to draw
+            if(dist(this.all_players[i].x, this.all_players[i].y, player.x, player.y) < 500 + windowHeight){
+                push()
+                translate(-camera.x + windowWidth / 2, -camera.y + windowHeight / 2)
+                fill(255, 0, 0)
+                try{
+                    // nametag
+                    textSize(16)
+                    text(this.all_players[i].name, this.all_players[i].position[0] - textWidth(this.all_players[i].name) / 2, this.all_players[i].position[1] - 25)
+                    ellipse(this.all_players[i].position[0], this.all_players[i].position[1], 40, 40)
+                }catch(e){}
+                pop()
+            }
         }
     }
 }
