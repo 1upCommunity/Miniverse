@@ -1,6 +1,17 @@
 class PlayScreen{
     constructor(){
         this.substate = "name";
+
+        this.db = firebase.initializeApp({
+            apiKey: "AIzaSyBmciB9i29s9ZBXKo1yWdXMVEmI5jxO-JI",
+            authDomain: "infected-bee30.firebaseapp.com",
+            databaseURL: "https://infected-bee30-default-rtdb.firebaseio.com",
+            projectId: "infected-bee30",
+            storageBucket: "infected-bee30.appspot.com",
+            messagingSenderId: "266440833007",
+            appId: "1:266440833007:web:b18afcc186476009c4e81a",
+            measurementId: "G-FD03M248JS"
+          }).database();
     }
 
     draw(){
@@ -14,9 +25,7 @@ class PlayScreen{
         }
         if(this.substate == "play"){
             this.player.update();
-            this.player.draw()
-            this.playerdrawer.draw()
-            this.playerdrawer.update()
+            this.player.draw();
         }
     }
 
@@ -30,7 +39,7 @@ class PlayScreen{
             this.substate = "play";
             this.name_input.remove();
             this.name_button.remove();
-            this.player = new Player(this.name_input.value());
+            this.player = new Player(this.name_input.value(), this.db);
         })
         this.name_input.hide()
         this.name_button.hide()

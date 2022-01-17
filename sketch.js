@@ -3,7 +3,7 @@ screens[0] = new LoadingScreen();
 screens[1] = new MenuScreen();
 screens[2] = new PlayScreen();
 var game_state = "load"
-var playerdrawer = new OtherPlayerDrawer()
+var playerdrawer = new OtherPlayerDrawer(screens[2].db)
 
 function preload() {
     screens[0].preload()
@@ -30,9 +30,8 @@ function draw() {
     }
     if(game_state == "play"){
         screens[2].draw();
+        playerdrawer.draw();
     }
-    playerdrawer.draw();
-    playerdrawer.update();
 }
 
 function windowResized() {

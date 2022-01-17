@@ -1,5 +1,5 @@
 class Player{
-    constructor(name){
+    constructor(name, db){
         this.name = name
         this.x = 0;
         this.y = 0;
@@ -8,24 +8,11 @@ class Player{
         this.terminalVel = windowWidth / 50;
         this.friction = 0.9;
         
-        this.db = firebase.initializeApp({
-            apiKey: "AIzaSyBmciB9i29s9ZBXKo1yWdXMVEmI5jxO-JI",
-            authDomain: "infected-bee30.firebaseapp.com",
-            databaseURL: "https://infected-bee30-default-rtdb.firebaseio.com",
-            projectId: "infected-bee30",
-            storageBucket: "infected-bee30.appspot.com",
-            messagingSenderId: "266440833007",
-            appId: "1:266440833007:web:b18afcc186476009c4e81a",
-            measurementId: "G-FD03M248JS"
-          }).database();
-        this.syncName()
+        this.db = db
     }
 
     update(){
         this.syncName()
-
-        camera.x = this.x;
-        camera.y = this.y;
 
         // wasd movement
         if(keyIsDown(87)){
@@ -52,9 +39,14 @@ class Player{
         // friction
         this.velX *= this.friction;
         this.velY *= this.friction;
+
+        camera.x = this.x;
+        camera.y = this.y;
     }
 
     draw(){
+        fill(255, 0, 0)
+        ellipse(windowWidth / 2 - 20, windowHeight / 2 - 20, 40, 40)
     }
 
     syncName(name){
