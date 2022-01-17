@@ -10,6 +10,8 @@ class Player{
         this.infected = false;
         
         this.db = db
+        displayToast("Welcome to the game, " + this.name + "!", "white", 2, 0)
+        displayToast("Tip: Use WASD to move.", "white", 2, 2)
     }
 
     update(){

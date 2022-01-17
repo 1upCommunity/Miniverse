@@ -4,13 +4,15 @@ screens[1] = new MenuScreen();
 screens[2] = new PlayScreen();
 var game_state = "load"
 var playerdrawer = new OtherPlayerDrawer(screens[2].db)
+var toastqueue = []
 
 function preload() {
     screens[0].preload()
 }
 
 function setup() {
-    createCanvas(windowWidth, windowHeight);
+    canvas = createCanvas(windowWidth, windowHeight);
+    canvas.style('z-index', '-1');
     game_state = "load"
     for(var i in screens){
         screens[i].preload()
@@ -18,6 +20,7 @@ function setup() {
     }
     screens[0].draw();
     game_state = "menu"
+    displayToast("Welcome to the game!", "white", 2, 0)
 }
   
 function draw() {
@@ -32,8 +35,25 @@ function draw() {
         screens[2].draw();
         playerdrawer.draw();
     }
+
+    for(var i in toastqueue){
+        toastqueue[i].show();
+    }
 }
 
 function windowResized() {
     resizeCanvas(windowWidth, windowHeight);
+}
+
+function displayToast(text, color, time, delay){
+    setTimeout(() => {
+        _displayToast(text, color, time)
+    }, delay * 1000)
+}
+
+
+function _displayToast(text, color, time){
+    let t = new Toast(text, color, time)
+    toastqueue.push(t)
+    t.show()
 }
