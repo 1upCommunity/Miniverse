@@ -18,6 +18,7 @@ function setup() {
         screens[i].preload()
         screens[i].setup()
     }
+    screens[2].preload()
     screens[0].draw();
     game_state = "menu"
     displayToast("Welcome to the game!", "white", 2, 0)

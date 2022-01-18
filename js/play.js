@@ -12,6 +12,8 @@ class PlayScreen{
             appId: "1:266440833007:web:b18afcc186476009c4e81a",
             measurementId: "G-FD03M248JS"
           }).database();
+
+          this.map = new Map(this.db)
     }
 
     draw(){
@@ -26,11 +28,13 @@ class PlayScreen{
         if(this.substate == "play"){
             this.player.update();
             this.player.draw();
+            this.map.draw();
         }
     }
 
     setup(){
         this.player = null
+        this.map.generate()
         this.name_input = createInput("");
         this.name_input.position(windowWidth / 2 - this.name_input.width / 2, windowHeight / 10 * 4);
         this.name_button = createButton("Submit");
@@ -50,5 +54,6 @@ class PlayScreen{
     }
 
     preload(){
+        this.map.preload();
     }
 }
