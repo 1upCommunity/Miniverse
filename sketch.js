@@ -9,6 +9,7 @@ let debug = false;
 let engine = Matter.Engine.create();
 let world = engine.world;
 let circle;
+let render
 
 function preload() {
     screens[0].preload()
@@ -30,14 +31,20 @@ function setup() {
     // create a Matter.js engine
     engine = Matter.Engine.create();
     world = engine.world;
-
     // add a circle to the world
-    circle = Matter.Bodies.circle(windowWidth / 2, windowHeight / 2, 50, {
+    circle = Matter.Bodies.circle(0, 0, 20, {
         restitution: 0.9,
         friction: 0.5,
         density: 0.01,
     });
     Matter.World.add(world, circle);
+    screens[2].body = circle;
+
+    Matter.Runner.run(engine);
+    // set gravity to 0
+    world.gravity.y = 0;
+
+    Matter.World.add(world, screens[2].map.bodies)
 }
   
 function draw() {
@@ -56,6 +63,8 @@ function draw() {
     for(var i in toastqueue){
         toastqueue[i].show();
     }
+
+    Matter.Engine.update(engine);
 }
 
 function windowResized() {

@@ -10,6 +10,7 @@ class Player{
         this.infected = false;
         this.infect_informed = [false, false];
         this.infected_snapshot_time = 0;
+        this.body = circle;
         
         this.db = db
         displayToast("Welcome to the game, " + this.name + "!", "white", 2, 0)
@@ -37,13 +38,14 @@ class Player{
         this.velX = constrain(this.velX, -this.terminalVel, this.terminalVel);
         this.velY = constrain(this.velY, -this.terminalVel, this.terminalVel);
 
-        // update position
-        this.x += this.velX;
-        this.y += this.velY;
-
         // friction
         this.velX *= this.friction;
         this.velY *= this.friction;
+
+        Matter.Body.setVelocity(this.body, {x: this.velX, y: this.velY});
+
+        this.x = this.body.position.x;
+        this.y = this.body.position.y;
 
         camera.x = this.x;
         camera.y = this.y;
@@ -79,6 +81,8 @@ class Player{
             this.infected = false;
             this.db.ref('players/' + this.name).update({"infected": false});
         }
+
+
     }
 
     draw(){

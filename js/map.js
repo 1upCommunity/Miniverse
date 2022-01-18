@@ -3,6 +3,7 @@ class Map{
         this.db = db;
         this.chunks = {};
         this.textures = {};
+        this.bodies = []
     }
 
     preload(){
@@ -81,16 +82,16 @@ class Map{
         this.chunks._0x1 = new Chunk(0, 1, 500, 500, this.textures.road_end_down);
 
         // buildings
-        this.chunks.__1x_1 = new Chunk(-1, -1, 500, 500, this.textures.building_1);
-        this.chunks.__2x_1 = new Chunk(-2, -1, 500, 500, this.textures.building_2);
-        this.chunks._1x_1 = new Chunk(1, -1, 500, 500, this.textures.hospital);
+        this.chunks.__1x_1 = new Chunk(-1, -1, 500, 500, this.textures.building_1, true);
+        this.chunks.__2x_1 = new Chunk(-2, -1, 500, 500, this.textures.building_2, true);
+        this.chunks._1x_1 = new Chunk(1, -1, 500, 500, this.textures.hospital, true);
     }
 
     draw(){
         push();
         translate(-camera.x, -camera.y);
         for(var i in this.chunks){
-            if(dist(this.chunks[i].x * this.chunks[i].w, this.chunks[i].y  * this.chunks[i].h, camera.x, camera.y) < windowHeight * 2){
+            if(dist(this.chunks[i].x * this.chunks[i].w, this.chunks[i].y  * this.chunks[i].h, camera.x, camera.y) < windowHeight * 5){
                 this.chunks[i].draw();
             }
         }
