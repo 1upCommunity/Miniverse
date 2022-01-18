@@ -83,6 +83,7 @@ class Map{
         // buildings
         this.chunks.__1x_1 = new Chunk(-1, -1, 500, 500, this.textures.building_1);
         this.chunks.__2x_1 = new Chunk(-2, -1, 500, 500, this.textures.building_2);
+        this.chunks._1x_1 = new Chunk(1, -1, 500, 500, this.textures.hospital);
     }
 
     draw(){
