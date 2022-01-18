@@ -22,6 +22,11 @@ class Map{
         this.textures.road_end_down = loadImage("assets/road_end_down.png");
         this.textures.road_end_left = loadImage("assets/road_end_left.png");
         this.textures.road_end_right = loadImage("assets/road_end_right.png");
+
+        // buildings
+        this.textures.building_1 = loadImage("assets/building_1.png");
+        this.textures.building_2 = loadImage("assets/building_2.png");
+        this.textures.hospital = loadImage("assets/hospital.png");
     }
 
     generate(){
@@ -73,6 +78,11 @@ class Map{
         this.chunks._3x_6 = new Chunk(3, -6, 500, 500, this.textures.road_turn_down_left);
         this.chunks._3x_5 = new Chunk(3, -5, 500, 500, this.textures.road_up);
         this.chunks._3x_4 = new Chunk(3, -4, 500, 500, this.textures.road_up);
+        this.chunks._0x1 = new Chunk(0, 1, 500, 500, this.textures.road_end_down);
+
+        // buildings
+        this.chunks.__1x_1 = new Chunk(-1, -1, 500, 500, this.textures.building_1);
+        this.chunks.__2x_1 = new Chunk(-2, -1, 500, 500, this.textures.building_2);
     }
 
     draw(){

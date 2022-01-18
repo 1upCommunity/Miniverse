@@ -5,7 +5,10 @@ screens[2] = new PlayScreen();
 var game_state = "load"
 var playerdrawer = new OtherPlayerDrawer(screens[2].db)
 var toastqueue = []
-let debug = false
+let debug = false;
+let engine = Matter.Engine.create();
+let world = engine.world;
+let circle;
 
 function preload() {
     screens[0].preload()
@@ -23,6 +26,18 @@ function setup() {
     screens[0].draw();
     game_state = "menu"
     displayToast("Welcome to the game!", "white", 2, 0)
+
+    // create a Matter.js engine
+    engine = Matter.Engine.create();
+    world = engine.world;
+
+    // add a circle to the world
+    circle = Matter.Bodies.circle(windowWidth / 2, windowHeight / 2, 50, {
+        restitution: 0.9,
+        friction: 0.5,
+        density: 0.01,
+    });
+    Matter.World.add(world, circle);
 }
   
 function draw() {
