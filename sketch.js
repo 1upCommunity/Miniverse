@@ -5,6 +5,7 @@ screens[2] = new PlayScreen();
 var game_state = "load"
 var playerdrawer = new OtherPlayerDrawer(screens[2].db)
 var toastqueue = []
+let debug = false
 
 function preload() {
     screens[0].preload()
