@@ -4,4 +4,5 @@
 </p>
 
 ## Graphics needed
+
 #### We are in search for more people who are good at graphics. The graphics in the game right now are pretty boring.
