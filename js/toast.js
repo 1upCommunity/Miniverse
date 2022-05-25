@@ -31,10 +31,6 @@ class Toast{
             this.animation_init = true
         }
     }
-
-    remove(parent){
-        parent.remove(this)
-    }
 } 
 
 class ToastManager{
@@ -44,6 +40,10 @@ class ToastManager{
 
     addToast(text, color="normal", duration=1){
         this.toasts.push(new Toast(text, color, duration));
+
+        setTimeout(() => {
+            this.toasts.shift();
+        }, duration * 10000);
     }
 
     remove(toast){
