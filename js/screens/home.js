@@ -1,6 +1,11 @@
+let parent_, self;
+
 class Home extends Screen {
   constructor(parent) {
     super("Home", parent);
+    this.parent = parent;
+    parent_ = parent;
+    self = this;
 
     this.animations_loaded = false;
   }
@@ -13,7 +18,9 @@ class Home extends Screen {
     this.play_button.color = "#00ffff";
     this.play_button.width = windowWidth / 4;
     this.play_button.onPress = function () {
-      console.log("pressed");
+      parent_.setScreen("Play");
+      self.textInput.hide();
+      localStorage.setItem("name", self.textInput.value());
     };
     this.play_button.onHover = function () {
       this.stroke = "#00ffff";

@@ -11,7 +11,7 @@ function setup() {
 
 function draw() {
   // align everything to the center of the screen
-  if (screen_drawer.currentScreen == "Loading" && frameCount % 300 == 0) {
+  if (screen_drawer.currentScreen == "Loading" && frameCount % 30 == 0) {
     screen_drawer.setScreen("Home");
   }
   background(255);

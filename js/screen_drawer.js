@@ -4,6 +4,7 @@ class ScreenDrawer {
       Loading: new Loading(this),
       Home: new Home(this),
       Login: new Login(this),
+      Play: new Play(this),
     };
     this.currentScreen = "Loading";
   }
