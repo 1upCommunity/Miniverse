@@ -12,7 +12,7 @@ class Play extends Screen {
     draw(){
         if(!this.init){
             this.user_ref = firebase.firestore().collection("Users").doc(localStorage.getItem("name"))
-            this.user_ref.update({
+            this.user_ref.set({
                 "available": true,
                 "pet": null,
                 "player_render_details": {
