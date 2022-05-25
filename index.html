@@ -8,22 +8,50 @@
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
     />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.18.0/matter.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.0.1/dist/gsap.min.js"></script>
+    <script src="p5.clickable.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyCSwq1vUZwSKusmIJ_IY3dWSLzM-MyZchw",
+
+        authDomain: "miniverse-86b8f.firebaseapp.com",
+
+        projectId: "miniverse-86b8f",
+
+        storageBucket: "miniverse-86b8f.appspot.com",
+
+        messagingSenderId: "845008199508",
+
+        appId: "1:845008199508:web:242916d519ce5313adb2c1",
+
+        measurementId: "G-4FKFRX3L3H",
+      };
+
+      // Initialize Firebase
+      app = firebase.initializeApp(firebaseConfig);
+      analytics = firebase.analytics();
+    </script>
     <link rel="stylesheet" type="text/css" href="style.css" />
     <meta charset="utf-8" />
 
-    <script src="js/loading.js"></script>
-    <script src="js/menu.js"></script>
-    <script src="js/play.js"></script>
-    <script src="js/player.js"></script>
-    <script src="js/draw_others.js"></script>
-    <script src="js/toast.js"></script>
-    <script src="js/map_chunk.js"></script>
-    <script src="js/map.js"></script>
-    <script src="js/place.js"></script>
-    <script src="js/task.js"></script>
-    <script src="js/thing.js"></script>
+    <!--Renderers-->
+    <script src="js/screen_drawer.js"></script>
+
+    <!--base classes-->
+    <script src="./js/screens/_screen_base.js"></script>
+
+    <!--screens-->
+    <script src="./js/screens/loading.js"></script>
+    <script src="./js/screens/home.js"></script>
+    <script src="./js/screens/login.js"></script>
   </head>
   <body>
     <script src="sketch.js"></script>
